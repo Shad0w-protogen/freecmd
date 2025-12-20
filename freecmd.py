@@ -1,6 +1,45 @@
 import os
 import sys
-H = ["help","create","delete","exit"] 
+import subprocess as use
+H = ["help","create","delete","exit","create-custom","run"]
+def run_file():
+    filepath = input("enter file path: ").strip()
+    try:
+        if os.path.exists(filepath):
+            use.run([filepath], check=True)
+        else:
+            print("file not found :",filepath)
+    except Exception as e:
+        print(f"{e}") 
+def create_file():
+    
+    filename = input("Введите имя файла: ").strip()
+    
+    if not filename:
+        print("error: filename is empty")
+        return
+    
+    extension = input("enter file extension (like .txt or etc): ").strip()
+    
+    if not extension:
+        print("empty file name")
+        return
+    
+
+    full_filename = f"{filename}.{extension}"
+    
+    try:
+        with open(full_filename, 'w', encoding='utf-8') as file:
+            file.write('')
+        
+        print(f"made a file '{full_filename}'")
+        
+    except PermissionError:
+        print(f"insufficent rights, '{full_filename}'.")
+    except OSError as e:
+        print(f"error while making file: {e}")
+    except Exception as e:
+        print(f"an unknown error happened during file creation: {e}")
 def delete_file():
     # Просим пользователя ввести название файла
     filename = input("enter name of file you wanna destroy: ")
@@ -56,12 +95,18 @@ def commands():
         delete_file()
     elif a==H[3]:
         quit_with_confirmation()
+    elif a==H[4]:
+        create_file()
+    elif a==H[5]:
+        run_file()
+
 
 
 
         
 while True:
     commands()
+
 
 
 
