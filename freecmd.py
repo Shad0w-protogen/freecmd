@@ -13,7 +13,7 @@ def run_file():
         print(f"{e}") 
 def create_file():
     
-    filename = input("Введите имя файла: ").strip()
+    filename = input("enter filename: ").strip()
     
     if not filename:
         print("error: filename is empty")
@@ -41,10 +41,8 @@ def create_file():
     except Exception as e:
         print(f"an unknown error happened during file creation: {e}")
 def delete_file():
-    # Просим пользователя ввести название файла
     filename = input("enter name of file you wanna destroy: ")
     
-    # Проверяем существование файла
     if os.path.exists(filename):
         try:
             os.remove(filename)
@@ -62,17 +60,14 @@ def quit_with_confirmation():
     else:
         print("returning...")
 def create_text_file():
-    # Просим пользователя ввести название файла
     filename = input("insert filename: ")
     
-    # Добавляем расширение .txt, если его нет
     if not filename.endswith('.txt'):
         filename += '.txt'
     
     try:
-        # Создаём файл и сразу закрываем его (пустой файл)
         with open(filename, 'w', encoding='utf-8') as file:
-            pass  # Просто создаём файл, ничего не записывая
+            pass  
         print(f"Created a file'{filename}'.")
     except Exception as e:
         print(f"error while making a file: {e}")
@@ -100,10 +95,6 @@ def commands():
     elif a==H[5]:
         run_file()
 
-
-
-
-        
 while True:
     commands()
 
