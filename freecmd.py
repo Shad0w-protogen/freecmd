@@ -2,6 +2,21 @@ import os
 import sys
 import subprocess as use
 H = ["help","create","delete","exit","create-custom","run"]
+def help_comma():
+    com = ["create","delete","exit","create-custom","run"]
+    print("Type name of the command to get description,or any key to quit the command")
+    if input() == com[0]:
+        print("makes an empty text file that you can redact later")
+    elif input() == com[1]:
+        print("deletes a file. Type the path or filename to delete")
+    elif input() == com[2]:
+        print("allows you to exit.Type y or yes to exit,and no to keep using my program")
+    elif input() == com[3]:
+        print("creates an empty file with extension determined by user")
+    elif input() == com[4]:
+        print("Allows you to open files and run others programs")
+    else:
+        return
 def run_file():
     filepath = input("enter file path: ").strip()
     try:
@@ -75,6 +90,7 @@ def commands():
     a = input("your command =>")
     if a == H[0]:
         print("Available commands :",H)
+        help_comma()
     elif a==H[1]:
         q = ["y","yes"]
         q2 = ["n","no"]
