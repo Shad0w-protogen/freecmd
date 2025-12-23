@@ -3,18 +3,20 @@ import sys
 import subprocess as use
 H = ["help","create","delete","exit","create-custom","run"]
 def help_comma():
-    com = ["create","delete","exit","create-custom","run"]
-    print("Type name of the command to get description,or any key to quit the command")
-    if input() == com[0]:
-        print("makes an empty text file that you can redact later")
-    elif input() == com[1]:
-        print("deletes a file. Type the path or filename to delete")
-    elif input() == com[2]:
-        print("allows you to exit.Type y or yes to exit,and no to keep using my program")
-    elif input() == com[3]:
-        print("creates an empty file with extension determined by user")
-    elif input() == com[4]:
-        print("Allows you to open files and run others programs")
+    commands = {
+        "create": "Creates an empty text file that you can edit later.",
+        "delete": "Deletes a file. Type the path or filename to delete.",
+        "exit": "Allows you to exit. Type 'y' or 'yes' to exit, and 'no' to keep using the program.",
+        "create-custom": "Creates an empty file with an extension determined by the user.",
+        "run": "Allows you to open files and run other programs."
+    }
+    
+    print("Type the name of the command to get its description, or any other key to quit.")
+    
+    user_input = input().strip().lower()
+    
+    if user_input in commands:
+        print(commands[user_input])
     else:
         return
 def run_file():
